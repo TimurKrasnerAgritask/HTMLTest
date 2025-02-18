@@ -1,0 +1,51 @@
+.date-picker-select {
+  width: 95px;
+  height: 30px;
+  background: #f7f7f7;
+  padding: 4px 15px;
+  border-radius: 3px;
+  color: var(--grayish-black);
+  border: none;
+}
+.DatePickerCalendar .datepicker-calendar-day {
+  width: 14.2857142857%;
+}
+.DatePickerCalendar .datepicker-calendar-day:focus {
+  outline: none;
+}
+.DatePickerCalendar .rotate-switch-month-icon {
+  transform: rotate(180deg);
+}
+.DatePickerCalendar .month-and-year-wrapper {
+  direction: initial;
+}
+.DatePickerCalendar .month-navigation:hover {
+  background-color: var(-gray-500);
+}
+.DatePickerCalendar .month-navigation:focus {
+  background-color: var(-gray-200);
+}
+.DatePickerCalendar .month-navigation-icon {
+  width: 24px;
+  height: 24px;
+}
+.DatePickerCalendar .h-10 {
+  height: 2.5rem;
+}
+.DatePickerCalendar .text-underline {
+  text-decoration: underline;
+}
+.TimerPicker .AtSelect {
+  display: flex;
+}
+.TimerPicker .AtSelect .AtSelectBody-buttons .AtButton {
+  display: none;
+}
+.TimerPicker .AtSelect .AtSelectBody-button {
+  -webkit-padding-end: var(--input-indent);
+          padding-inline-end: var(--input-indent);
+  text-align: center;
+}
+.DatePicker:focus {
+  outline: none;
+}

@@ -1,0 +1,262 @@
+.ReadonlyField {
+  word-wrap: break-word;
+}
+.ReadonlyField.long-label > .ReadonlyField-label {
+  min-width: 190px;
+  display: inline-block;
+}
+.ReadonlyField .replaced-content {
+  text-decoration: line-through;
+}
+.AtRadiobutton {
+  --main-color: var(--gray-800);
+  --checked-color: var(--blue);
+  --disabled-color: var(--quotation-disabled-grey);
+  --hover-circle-position: -0.8125rem;
+  --radiobutton-radius: 1.125rem;
+  --hover-circle-radius: 2.5rem;
+  --inner-dot-radius: 0.625rem;
+  --inner-dot-position: 0.125rem;
+  --border-width: 0.125rem;
+  position: relative;
+  margin-bottom: 0;
+  cursor: pointer;
+  font-size: var(--input-font-size);
+}
+.AtRadiobutton.disabled {
+  color: var(--gray-700);
+}
+.AtRadiobutton .at-radiobutton-input {
+  display: none;
+}
+.AtRadiobutton .at-radiobutton-label {
+  margin-bottom: 0;
+}
+.AtRadiobutton .at-radiobutton {
+  display: inline-block;
+  -webkit-margin-end: 0.3em;
+          margin-inline-end: 0.3em;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  width: var(--radiobutton-radius);
+  height: var(--radiobutton-radius);
+  cursor: pointer;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--main-color);
+  background-color: var(--white);
+  top: 0.2em;
+  box-sizing: border-box;
+}
+body[dir=rtl] .AtRadiobutton .at-radiobutton {
+  left: auto;
+  right: 0;
+}
+.AtRadiobutton .at-radiobutton:before {
+  content: "";
+  height: var(--hover-circle-radius);
+  width: var(--hover-circle-radius);
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  top: var(--hover-circle-position);
+  left: var(--hover-circle-position);
+  z-index: 1;
+  transform: scale(0);
+  transition: 300ms;
+  border: none;
+}
+body[dir=rtl] .AtRadiobutton .at-radiobutton:before {
+  left: auto;
+  right: var(--hover-circle-position);
+}
+.AtRadiobutton .at-radiobutton:after {
+  display: none;
+  content: "";
+  width: var(--inner-dot-radius);
+  height: var(--inner-dot-radius);
+  border-radius: 50%;
+  background: var(--checked-color);
+  left: var(--inner-dot-position);
+  top: var(--inner-dot-position);
+  position: absolute;
+}
+body[dir=rtl] .AtRadiobutton .at-radiobutton:after {
+  left: auto;
+  right: var(--inner-dot-position);
+}
+.AtRadiobutton .at-radiobutton.checked {
+  border: var(--border-width) solid var(--checked-color);
+}
+.AtRadiobutton .at-radiobutton.checked:after {
+  display: block;
+}
+.AtRadiobutton .at-radiobutton.checked:hover:before {
+  background-color: rgba(58, 121, 255, 0.1);
+  transform: scale(1);
+  transition: 300ms;
+}
+.AtRadiobutton .at-radiobutton.checked:active:before {
+  background-color: rgba(58, 121, 255, 0.3);
+  transform: scale(1);
+  transition: 300ms;
+}
+.AtRadiobutton .at-radiobutton.checked:focus:before {
+  background-color: rgba(58, 121, 255, 0.2);
+  transform: scale(1);
+  transition: 300ms;
+}
+.AtRadiobutton .at-radiobutton.disabled {
+  border-color: var(--disabled-color);
+  cursor: default;
+}
+.AtRadiobutton .at-radiobutton.disabled:after {
+  background: var(--disabled-color);
+}
+.AtRadiobutton .at-radiobutton:active:before {
+  background-color: rgba(210, 210, 210, 0.4);
+  transform: scale(1);
+  transition: 300ms;
+}
+.AtRadiobutton .at-radiobutton:hover:before {
+  background-color: rgba(210, 210, 210, 0.2);
+  transform: scale(1);
+  transition: 300ms;
+}
+.AtRadiobutton .at-radiobutton:focus:before {
+  background-color: rgba(210, 210, 210, 0.3);
+  transform: scale(1);
+  transition: 300ms;
+}
+
+body[dir=rtl] .AtRadiobutton .at-radiobutton-input {
+  right: 0;
+  left: auto;
+}
+body[dir=rtl] .AtRadiobutton .at-radiobutton-input:before {
+  right: var(--hover-circle-position);
+  left: auto;
+}
+body[dir=rtl] .AtRadiobutton .at-radiobutton-input:after {
+  right: var(--inner-dot-position);
+  left: auto;
+}
+.Tooltip {
+  --tooltip-padding: 18px;
+  background: var(--white);
+  border-radius: 3px;
+  display: inline-block;
+  padding: var(--tooltip-padding);
+  z-index: var(--tooltip-z);
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  white-space: break-spaces;
+}
+
+@media screen and (max-width: 600px) {
+  .Tooltip {
+    max-width: 200px;
+  }
+}
+.Tooltip-content {
+  -webkit-padding-after: 1px;
+          padding-block-end: 1px;
+  overflow: auto;
+}
+
+.Tooltip::before {
+  content: "";
+  position: absolute;
+  border: solid transparent calc(var(--arrow-size));
+  --center-arrow: calc(50% - var(--arrow-size));
+  --position-end: calc(100% - 1px);
+}
+
+.Tooltip[portal-position=bottom]::before {
+  border-bottom-color: white;
+  border-top: unset;
+  bottom: var(--position-end);
+  left: var(--center-arrow);
+}
+
+.Tooltip[portal-position=top]::before {
+  border-top-color: white;
+  border-bottom: unset;
+  top: 100%;
+  left: var(--center-arrow);
+}
+
+.Tooltip[portal-position=right]::before,
+body[dir=ltr] .Tooltip[portal-position=inline-end]::before,
+body[dir=rtl] .Tooltip[portal-position=inline-start]::before {
+  border-right-color: white;
+  border-left: unset;
+  right: var(--position-end);
+  top: var(--center-arrow);
+}
+
+.Tooltip[portal-position=left]::before,
+body[dir=ltr] .Tooltip[portal-position=inline-start]::before,
+body[dir=rtl] .Tooltip[portal-position=inline-end]::before {
+  border-left-color: white;
+  border-right: unset;
+  left: var(--position-end);
+  top: var(--center-arrow);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms ease-in;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.ErrorMessage {
+  font-size: 0.8rem;
+  color: var(--severity-red);
+  z-index: 1;
+  inset-inline-end: 0;
+}
+.ErrorMessage.position-bottom {
+  transform: translateY(100%);
+  inset-block-end: calc(-1 * var(--spacing-01));
+}
+.ErrorMessage.position-corner {
+  inset-inline-end: 5px;
+  inset-block-end: 5px;
+}
+.ErrorMessage.position-bottom-start {
+  inset-inline-start: 0;
+}
+.ErrorMessage .icon {
+  font-size: 1rem;
+}
+.AtRadiogroup.inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.AtRadiogroup.inline .AtRadiobutton {
+  -webkit-margin-end: var(--spacing-08);
+          margin-inline-end: var(--spacing-08);
+}
+.AtRadiogroup.column {
+  display: flex;
+  flex-direction: column;
+}
+.AtRadiogroup.two-columns {
+  display: flex;
+  flex-flow: row wrap;
+}
+.AtRadiogroup.two-columns .AtRadiobutton {
+  display: block;
+  flex-basis: 50%;
+}

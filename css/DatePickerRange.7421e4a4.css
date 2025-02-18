@@ -1,0 +1,122 @@
+.date-picker-select {
+  width: 95px;
+  height: 30px;
+  background: #f7f7f7;
+  padding: 4px 15px;
+  border-radius: 3px;
+  color: var(--grayish-black);
+  border: none;
+}
+.DatePickerCalendar .datepicker-calendar-day {
+  width: 14.2857142857%;
+}
+.DatePickerCalendar .datepicker-calendar-day:focus {
+  outline: none;
+}
+.DatePickerCalendar .rotate-switch-month-icon {
+  transform: rotate(180deg);
+}
+.DatePickerCalendar .month-and-year-wrapper {
+  direction: initial;
+}
+.DatePickerCalendar .month-navigation:hover {
+  background-color: var(-gray-500);
+}
+.DatePickerCalendar .month-navigation:focus {
+  background-color: var(-gray-200);
+}
+.DatePickerCalendar .month-navigation-icon {
+  width: 24px;
+  height: 24px;
+}
+.DatePickerCalendar .h-10 {
+  height: 2.5rem;
+}
+.DatePickerCalendar .text-underline {
+  text-decoration: underline;
+}
+.TimerPicker .AtSelect {
+  display: flex;
+}
+.TimerPicker .AtSelect .AtSelectBody-buttons .AtButton {
+  display: none;
+}
+.TimerPicker .AtSelect .AtSelectBody-button {
+  -webkit-padding-end: var(--input-indent);
+          padding-inline-end: var(--input-indent);
+  text-align: center;
+}
+.DatePickerPresets[data-v-21860c33]::after {
+  display: block;
+  align-self: stretch;
+  width: 1px;
+  content: "";
+  background-color: #d8d8d8;
+}
+.DatePickerPresets ul[data-v-21860c33] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.DatePickerPresets li button[data-v-21860c33] {
+  text-align: start;
+}
+.DatePickerPresets-list-item[data-v-21860c33] {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.DatePickerPresets .selectedPreset[data-v-21860c33] {
+  color: var(--white);
+  background-color: var(--pri-500);
+}
+.DatePickerPresets .preset-button[data-v-21860c33]:focus {
+  outline: none;
+  font-weight: 600;
+}
+.DatePickerPresets .preset-button[data-v-21860c33]:active {
+  text-decoration: underline;
+}
+
+.InputDatePickerEdge {
+&:hover,
+    &:focus {
+      border: 1px solid var(--gray-600);
+}
+&-icon {
+      width: 24px;
+      height: 24px;
+}
+&-button {
+&:focus {
+        outline: none;
+        background-color: var(--gray-200);
+}
+}
+&-clear-button {
+      margin-right: -0.75rem;
+      margin-top: -0.75rem;
+}
+.fill-current {
+      fill: currentColor;
+}
+.x-id-pe-container .x-id-pe-close {
+      opacity: 0;
+}
+.x-id-pe-container:hover .x-id-pe-close,
+    .x-id-pe-container .x-id-pe-close:focus,
+    .x-id-pe-container:focus-within .x-id-pe-close {
+      opacity: 1;
+}
+}
+
+.DatePickerRange {
+  display: grid;
+  grid-template-areas: "preset calendar" "preset control";
+  grid-template-rows: auto auto;
+  /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+  grid-template-columns: 8rem 38rem;
+  grid-column-gap: 2rem;
+}
+.DatePickerRange:focus {
+  outline: none;
+}
