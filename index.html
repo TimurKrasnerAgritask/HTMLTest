@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML Rendrer</title>
-  <link href="./css/index.d151a76f.css" rel="stylesheet"></head>
+  <link href="./css/index.245e360d.css" rel="stylesheet"></head>
   <body>
     <script>
       const isDemo = true;
@@ -21,11 +21,188 @@
       };
       const demoConfig = {
         components: [
+            {
+              component: 'div',
+              id:"main-container-1 ",
+              props:{
+                class:'grid-container pad-inline-04 gap-02 pad-02 margin-02'
+              },
+              children:[
+                {
+                  component:"h1",
+                  id:"titles-title",
+                  props:{
+                    class:"col-span-12"
+                  },
+                  html:"Titles -"
+                },
+                {
+                  component: 'MobileLabel',
+                  id: 'lable-1',
+                  props: {
+                    text:"This is a label",
+                    tooltip:"This is a tooltip of lable-1",
+                    description:"This is a description",
+                    class: 'col-span-6',
+                  },
+                },
+                {
+                  component: 'MobileLabel',
+                  id: 'lable-required-1',
+                  props: {
+                    text:"This is a required label",
+                    tooltip:"This is a tooltip of lable-required-1",
+                    description:"This is a description",
+                    isRequired:true,
+                    class: 'col-span-6',
+                  },
+                },
+                {
+                  component: 'MobileLabel',
+                  id: 'lable-no-desc-1',
+                  props: {
+                    text:"This is a label without description",
+                    tooltip:"This is a tooltip of lable-no-desc-1",
+                    class: 'col-span-6',
+                  },
+                },
+                {
+                  component: 'MobileLabel',
+                  id: 'title-1',
+                  props: {
+                    text:"This is a title",
+                    tooltip:"This is a tooltip of title-1",
+                    isTitle:true,
+                    description:"This is a description",
+                    class: 'col-span-12',
+                  },
+                },
+                {
+                  component: 'MobileLabel',
+                  id: 'title-no-tooltip-1',
+                  props: {
+                    text:"This is a title without tooltip",
+                    isTitle:true,
+                    description:"This is a description",
+                    class: 'col-span-12',
+                  },
+                },
+                ]
+              },
+            {
+              component: 'div',
+              id:"main-container-3 ",
+              props:{
+                class:'grid-container pad-inline-04 gap-02 pad-02 margin-02'
+              },
+              children:[
+              {
+                  component:"h1",
+                  id:"Input-title",
+                  html:"Inputs -",
+                  props:{
+                    class:"col-span-12"
+                  }
+                },
+                {
+                  component: 'h3',
+                  html:'search',
+                  props:{
+                    class:"col-span-12"
+                  }
+                },
+                {
+                id:"SearchInput-2",
+                component:"SearchInput",
+                props:{
+                  class:"col-span-12"
+                }
+              },
+              {
+                id:"Input-1",
+                component:"AtInput",
+                slots:[
+                  {
+                    slotName:"starticon",
+                    component:"trash-icon",
+                  },
+                  {
+                    slotName:"endicon",
+                    component:"trash-icon",
+                  }
+                ],
+                props:{
+                  class:"col-span-12",
+                  placeholder:"Text - large",
+                  size:"l",
+                }
+              },
+              {
+                id:"Input-Number-1",
+                component:"AtInput",
+
+                slots:[
+                  {
+                    slotName:"starticon",
+                    component:"number-icon",
+                  },
+                  {
+                    slotName:"endicon",
+                    component:"circle-icon",
+                  }
+                ],
+                props:{
+                  class:"col-span-12",
+                  placeholder:"Number - size Medium",
+                  size:"m",
+                  type:"number",
+                }
+              },
+
+              {
+                component:"h1",
+                html:"Buttons - ",
+                props:{
+                  class:"col-span-12"
+                }
+              },
+                ...['primary','text','secondary-active','square'].map((visual)=>{
+                  const isSquare = visual === 'square'
+                  const isSecondaryActive = visual === 'secondary-active'
+                  console.log(isSecondaryActive)
+                  return ['s','m','l'].map((size)=>{
+                  return ['','disabled','dark','darkest','danger',"none"].map((mood) => {
+                    return  {
+                    component: mood === "none"?'div':'AtButton',
+                    html: isSquare ||mood === "none" ? '' : `<span ${isSecondaryActive ? 'class="asterisk"':''}>${visual} ${mood} ${size}</span>`,
+                    props: {
+                      visual,
+                      isSquare,
+                      disabled:mood === 'disabled',
+                      size,
+                      mood,
+                      class: "col-span-12 inline-auto",
+                    },
+                    slots:[
+                      {
+                        slotName: 'start',
+                        component: 'plus-icon'
+                      }
+                    ],
+                    id: `${visual}${size}${mood}`,
+                    }
+                  })
+                  }).flat()
+                }).flat(),
+
+              ]
+            }
+            ,
           {
             component: 'div',
-            id:"main-container-1 ",
+            id:"main-container-2 ",
             props:{
-              class:'grid-container pad-inline-04 gap-08 bg-pri-500 rounded-04 text-gray-100 pad-04 margin-02'
+              class:'grid-container pad-inline-04 gap-02 bg-pri-500 rounded-04 text-gray-100 pad-02 margin-02'
             },
             children:[
 
@@ -56,14 +233,23 @@
                 id: '1', // uses ID as the key to know if components need to be replaces or just updated
               },
               {
+                id:"SearchInput-1",
+                component:"SearchInput",
+                props:{
+                  class:"col-span-12"
+                }
+              },
+
+              {
                 component:'AtRadiogroup',
                 id:'AtRadiogroup-5',
                 getModelValue: ()=>radioValue,
                 setModelValue: (value) => {
                   radioValue = value
+                  setConfig(window.getConfig())
                 },
                 props: {
-                  class:"col-span-6",
+                  class:"col-span-12",
                   label:"Radio group",
                   direction: 'inline', //inline/column
                   name:"radio-group",
@@ -79,17 +265,18 @@
                 getModelValue: () => window.datePickerValue,
                 setModelValue: (value) =>{
                   window.datePickerValue = value
+                  setConfig(window.getConfig())
                 },
                 id: 'AtDatePicker-10',
                 props:{
-                  class:"col-span-6",
+                  class:"col-span-12",
                   label:"Date picker",
                 }
               },
               {
                 component: 'AtInput',
                 props: {
-                  // class:"col-span-12",
+                  class:"col-span-12",
                   modelValue: 'this is the default value',
                 },
                 id: 'AtInput-2',
@@ -98,7 +285,7 @@
                 component: 'AtSelect',
                 props: {
                   modelValue: '1',
-                  class:"col-span-6",
+                  class:"col-span-8 w-100",
                   options: [
                     { text: '1', value: 1 },
                     { text: '2', value: 2 },
@@ -110,9 +297,15 @@
               {
                 component: 'AtButton',
                 html: 'this is a button label',
+                slots:[
+                  {
+                    slotName:'start',
+                    component:'trash-icon'
+                  }
+                ],
                 props: {
                   visual: 'secondary-active',
-                  // class:"col-span-6",
+                  class:"col-span-12",
 
                 },
                 id: '4',
@@ -131,8 +324,9 @@
       html {
         margin: 0;
         padding: 0;
-        max-width: 100vw;
+        width: 100vw;
+        overflow-x: hidden;
       }
     </style>
-  <script src="./js/index.4607fe30.js"></script></body>
+  <script src="./js/index.fca09f35.js"></script></body>
 </html>

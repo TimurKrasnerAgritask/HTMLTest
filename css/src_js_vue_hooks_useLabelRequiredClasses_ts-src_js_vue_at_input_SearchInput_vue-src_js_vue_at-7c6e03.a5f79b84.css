@@ -1,0 +1,266 @@
+.Tooltip {
+  --tooltip-padding: 18px;
+  background: var(--white);
+  border-radius: 3px;
+  display: inline-block;
+  padding: var(--tooltip-padding);
+  z-index: var(--tooltip-z);
+  max-width: 300px;
+  width: auto;
+  height: auto;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  white-space: break-spaces;
+}
+
+@media screen and (max-width: 600px) {
+  .Tooltip {
+    max-width: 200px;
+  }
+}
+.Tooltip-content {
+  -webkit-padding-after: 1px;
+          padding-block-end: 1px;
+  overflow: auto;
+}
+
+.Tooltip::before {
+  content: "";
+  position: absolute;
+  border: solid transparent calc(var(--arrow-size));
+  --center-arrow: calc(50% - var(--arrow-size));
+  --position-end: calc(100% - 1px);
+}
+
+.Tooltip[portal-position=bottom]::before {
+  border-bottom-color: white;
+  border-top: unset;
+  bottom: var(--position-end);
+  left: var(--center-arrow);
+}
+
+.Tooltip[portal-position=top]::before {
+  border-top-color: white;
+  border-bottom: unset;
+  top: 100%;
+  left: var(--center-arrow);
+}
+
+.Tooltip[portal-position=right]::before,
+body[dir=ltr] .Tooltip[portal-position=inline-end]::before,
+body[dir=rtl] .Tooltip[portal-position=inline-start]::before {
+  border-right-color: white;
+  border-left: unset;
+  right: var(--position-end);
+  top: var(--center-arrow);
+}
+
+.Tooltip[portal-position=left]::before,
+body[dir=ltr] .Tooltip[portal-position=inline-start]::before,
+body[dir=rtl] .Tooltip[portal-position=inline-end]::before {
+  border-left-color: white;
+  border-right: unset;
+  left: var(--position-end);
+  top: var(--center-arrow);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms ease-in;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.ErrorMessage {
+  font-size: 0.8rem;
+  color: var(--severity-red);
+  z-index: 1;
+  inset-inline-end: 0;
+}
+.ErrorMessage.position-bottom {
+  transform: translateY(100%);
+  inset-block-end: calc(-1 * var(--spacing-01));
+}
+.ErrorMessage.position-corner {
+  inset-inline-end: 5px;
+  inset-block-end: 5px;
+}
+.ErrorMessage.position-bottom-start {
+  inset-inline-start: 0;
+}
+.ErrorMessage .icon {
+  font-size: 1rem;
+}
+.LengthLimit {
+  font-size: 0.875em;
+}
+.LengthLimit.max_or_invalid {
+  color: var(--severity-red);
+}
+.ReadonlyField {
+  word-wrap: break-word;
+}
+.ReadonlyField.long-label > .ReadonlyField-label {
+  min-width: 190px;
+  display: inline-block;
+}
+.ReadonlyField .replaced-content {
+  text-decoration: line-through;
+}
+.StaticLabel,
+.StaticLabel.mt-static-label {
+  text-transform: capitalize;
+  margin-bottom: var(--spacing-01);
+  font-size: 0.875rem;
+}
+.StaticLabel-info,
+.StaticLabel.mt-static-label-info {
+  color: var(--gray-900);
+  width: 1em;
+  height: 1em;
+  margin-inline: 0.15em;
+  position: relative;
+  top: 0.1em;
+}
+.AtInput {
+  --icon-spacing: var(--spacing-02);
+  --input-inline-padding: var(--spacing-01);
+  padding-inline: var(--input-inline-padding);
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  background: var(--background-color);
+  --icon-colors: var(--gray-800);
+}
+.AtInput input {
+  font-family: var(--font-family-base);
+}
+.AtInput input[type=date] {
+  text-transform: uppercase;
+}
+.AtInput > .input:-webkit-autofill, .input:-webkit-autofill ~ .AtInput-buttons {
+  box-shadow: 0 0 0px 100vmax #e8f0fe inset;
+}
+.AtInput:has(.input:-webkit-autofill) .input {
+  border-end-end-radius: 0;
+  border-start-end-radius: 0;
+}
+.AtInput:has(.input:-webkit-autofill) .AtInput-buttons {
+  border-end-end-radius: var(--input-border-radius);
+  border-start-end-radius: var(--input-border-radius);
+}
+.AtInput > .input:focus-visible {
+  outline: none;
+}
+.AtInput > .input {
+  width: 100%;
+  border: none;
+  border-radius: var(--input-border-radius);
+  line-height: normal;
+  text-indent: calc(var(--input-indent) - var(--input-inline-padding));
+}
+.AtInput > .input:focus::-moz-placeholder {
+  color: transparent;
+}
+.AtInput > .input:focus::placeholder {
+  color: transparent;
+}
+.AtInput > .input::-moz-placeholder {
+  color: var(--gray-600);
+}
+.AtInput > .input::placeholder {
+  color: var(--gray-600);
+}
+.AtInput > .input::-webkit-outer-spin-button, .AtInput > .input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.AtInput > .input[type=number] {
+  -moz-appearance: textfield;
+}
+.AtInput:focus-within, .AtInput:not(.empty-value) {
+  --icon-colors: var(--pri-500);
+}
+.AtInput-clear {
+  display: flex;
+  align-items: center;
+  color: var(--pri-500);
+  -webkit-padding-end: var(--icon-spacing);
+          padding-inline-end: var(--icon-spacing);
+}
+.AtInput-error {
+  color: var(--danger-500);
+  -webkit-padding-end: var(--icon-spacing);
+          padding-inline-end: var(--icon-spacing);
+}
+.AtInput-icon {
+  display: flex;
+  align-items: center;
+  color: var(--icon-colors);
+}
+.AtInput-icon.icon-start {
+  -webkit-padding-start: var(--icon-spacing);
+          padding-inline-start: var(--icon-spacing);
+}
+.AtInput-icon.icon-end:has(svg) {
+  -webkit-padding-end: var(--icon-spacing);
+          padding-inline-end: var(--icon-spacing);
+}
+.AtInput-icon.border-start {
+  -webkit-padding-end: var(--icon-spacing);
+          padding-inline-end: var(--icon-spacing);
+  -webkit-border-end: solid 1px var(--gray-600);
+          border-inline-end: solid 1px var(--gray-600);
+}
+.AtInput-icon.border-end {
+  -webkit-padding-start: var(--icon-spacing);
+          padding-inline-start: var(--icon-spacing);
+  -webkit-border-start: solid 1px var(--gray-600);
+          border-inline-start: solid 1px var(--gray-600);
+}
+.AtInput.has-start-icon {
+  --label-hor-offset: 50px;
+}
+.AtInput .LengthLimit {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: calc(100% + 4px);
+}
+.AtInput.mt-invalid {
+  --mt-color: var(--danger-500);
+}
+.AtInput .ErrorMessage.position-bottom {
+  -webkit-margin-start: var(--spacing-03);
+          margin-inline-start: var(--spacing-03);
+}
+
+.AtInput[disabled=true],
+.AtInput[disabled=disabled],
+.AtInput.mt-disabled {
+  border-color: var(--greyBA);
+  background: var(--disabled-grey);
+}
+.AtInput[disabled=true] input,
+.AtInput[disabled=true] label,
+.AtInput[disabled=disabled] input,
+.AtInput[disabled=disabled] label,
+.AtInput.mt-disabled input,
+.AtInput.mt-disabled label {
+  cursor: not-allowed;
+  background: var(--disabled-bg-color);
+}
+
+.AtInput input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+.AtInput input[type=date]::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  display: none;
+}
+.SearchInput .highlighted {
+  color: var(--pri-500);
+}

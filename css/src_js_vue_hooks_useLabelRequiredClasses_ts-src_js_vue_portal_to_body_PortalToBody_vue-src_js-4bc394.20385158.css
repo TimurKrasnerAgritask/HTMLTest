@@ -1,0 +1,10 @@
+.ReadonlyField {
+  word-wrap: break-word;
+}
+.ReadonlyField.long-label > .ReadonlyField-label {
+  min-width: 190px;
+  display: inline-block;
+}
+.ReadonlyField .replaced-content {
+  text-decoration: line-through;
+}
