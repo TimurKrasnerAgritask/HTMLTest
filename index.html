@@ -275,6 +275,20 @@
                 }
               },
               {
+                component: 'AtDatePicker',
+                getModelValue: () => window.datePickerValue,
+                setModelValue: (value) =>{
+                  window.datePickerValue = value
+                  setConfig(window.getConfig())
+                },
+                id: 'AtDatePicker-11',
+                props:{
+                  isRequired:true,
+                  class:"col-span-12",
+                  label:"Date picker",
+                }
+              },
+              {
                 component: 'AtInput',
                 props: {
                   class:"col-span-12",
@@ -329,5 +343,5 @@
         overflow-x: hidden;
       }
     </style>
-  <script src="./js/index.dbea4e6f.js"></script></body>
+  <script src="./js/index.50a724a4.js"></script></body>
 </html>
