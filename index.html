@@ -174,13 +174,14 @@
                   return ['','disabled','dark','darkest','danger',"none"].map((mood) => {
                     return  {
                     component: mood === "none"?'div':'AtButton',
-                    html: isSquare ||mood === "none" ? '' : `<span ${isSecondaryActive ? 'class="asterisk"':''}>${visual} ${mood} ${size}</span>`,
+                    html: isSquare ||mood === "none" ? '' : `${visual} ${mood} ${size}`,
                     props: {
                       visual,
                       isSquare,
                       disabled:mood === 'disabled',
                       size,
                       mood,
+                      isRequired:visual === 'secondary-active',
                       class: "col-span-12 inline-auto",
                     },
                     slots:[
@@ -328,5 +329,5 @@
         overflow-x: hidden;
       }
     </style>
-  <script src="./js/index.6ce08a1d.js"></script></body>
+  <script src="./js/index.dbea4e6f.js"></script></body>
 </html>
